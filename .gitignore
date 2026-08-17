@@ -1,0 +1,9 @@
+# OCaml / dune build artifacts (regenerable via `dune build`)
+_build/
+*.install
+# compiled scratch binaries
+*.out
+*.o
+a.out
+# editor / OS cruft
+.DS_Store

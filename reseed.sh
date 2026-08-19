@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 # Reseed a Kite checkout's bootstrap binary from its current compiler sources.
 #
 # This is the one job Fledge performed for the Kite repo: compile the Kite
@@ -9,7 +9,11 @@
 #
 # Point KITE_ROOT at a Kite checkout (default: a sibling ../Language).
 set -e
-export PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+
+# Make the OCaml toolchain (dune) discoverable when opam manages it, without
+# assuming a particular install prefix. Falls back to the inherited PATH.
+command -v opam >/dev/null 2>&1 && eval "$(opam env 2>/dev/null)" || true
+
 HERE=${0:A:h}
 KITE_ROOT=${KITE_ROOT:-"$HERE/../Language"}
 [ -d "$KITE_ROOT/compiler" ] || { echo "no Kite checkout at $KITE_ROOT (set KITE_ROOT)"; exit 1; }

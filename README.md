@@ -65,3 +65,7 @@ longer parses, so it is retired from the bootstrap path — the committed seed i
 now the sole bootstrap. It is preserved here as a record of how Kite first came
 up, and its parser and checker remain a useful second, independent implementation
 of the Kite frontend to diff the self-hosted one against.
+
+## License
+
+Licensed under the [Apache License 2.0](LICENSE).
